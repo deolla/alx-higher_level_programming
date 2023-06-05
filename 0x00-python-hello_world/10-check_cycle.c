@@ -13,20 +13,16 @@ int check_cycle(listint_t *list)
 
 	op = list;
 	ops = list;
-	if (list == NULL)
-	{
-		return (0);
-	}
-	ops = ops->next;
 
-	while (ops != NULL  && ops->next != NULL && op != NULL)
+	while (ops != NULL && ops->next != NULL)
 	{
-		if (op == ops)
-		{
-			return (-1);
-		}
 		op = op->next;
 		ops = ops->next->next;
+
+		if (op == ops)
+		{
+			return (1);
+		}
 	}
 	return (0);
 }
