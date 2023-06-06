@@ -41,3 +41,12 @@ Write a function that prints the numbers from 1 to 100 separated by a space.
 
 13. Insert in sorted linked list
 Write a function in C that inserts a number into a sorted singly linked list.
+
+14. Smile in the mirror
+Write a program that prints the ASCII alphabet, in reverse order, alternating lowercase and uppercase (z in lowercase and Y in uppercase) , not followed by a new line.
+
+15. Remove at position
+Write a function that creates a copy of the string, removing the character at the position n (not the Python way, the “C array index”).
+
+16. ByteCode -> Python #2
+Write the Python function def magic_calculation(a, b, c): that does exactly the same as the following Python bytecode:
