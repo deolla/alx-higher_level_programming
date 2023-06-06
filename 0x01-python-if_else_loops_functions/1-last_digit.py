@@ -8,11 +8,11 @@ last_digit = abs(number) % 10
 if number < 0:
     last_digit *= -1
 
-print("Last_digit of {} is {}".format(number, last_digit), end='')
+print("Last_digit of {} is {} and is ".format(number, last_digit), end='')
 
 if last_digit > 5:
-    print(" and is greater that 5")
+    print("greater that 5\n")
 elif last_digit == 0:
-    print(" and is 0")
+    print("0\n")
 else:
-    print(" and is less than 6 and not 0")
+    print("and is less than 6 and not 0\n")
