@@ -2,12 +2,12 @@
 
 import sys
 
-args = sys.argv[1:]
+if __name__ == "__main__":
+    args = sys.argv[1:]
 
-count_args = len(args)
-plural = 's' if count_args != 1 else ''
+    count_args = len(args)
+    plural = 's' if count_args != 1 else ''
+    print("{} argument{}:".format(count_args, plural))
 
-print("{} argument{}:".format(count_args, plural))
-
-for m, arg in enumerate(args, start=1):
-    print("{}: {}".format(m, arg))
+    for m, arg in enumerate(args, start=1):
+        print("{}: {}".format(m, arg))
