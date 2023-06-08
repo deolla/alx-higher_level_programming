@@ -3,11 +3,15 @@
 import sys
 
 if __name__ == "__main__":
-    args = sys.argv[1:]
+    num_args = len(sys.argv) - 1
 
-    count_args = len(args)
-    plural = 's' if count_args != 1 else ''
-    print("{} argument{}:".format(count_args, plural))
+    if num_args == 0:
+        print("0 arguments.")
+    elif num_args == 1:
+        print("1a argument:")
+    else:
+        print("{} arguments:".format(num_args))
 
-    for m, arg in enumerate(args, start=1):
-        print("{}: {}".format(m, arg))
+    if num_args > 0:
+        for i, arg in enumerate(sys.argv[1:], start=1):
+            print("{}: {}".format(i, arg))
