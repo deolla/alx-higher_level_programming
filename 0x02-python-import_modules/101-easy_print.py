@@ -1,3 +1,4 @@
 #!/usr/bin/python3
-import builtins
-__builtins__.print("#pythoniscool")
+import os
+message = "#pythoniscool\n"
+os.write(1, message.encode())
