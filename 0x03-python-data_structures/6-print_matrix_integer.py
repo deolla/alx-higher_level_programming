@@ -2,6 +2,6 @@
 
 def print_matrix_integer(matrix=[[]]):
     for row in matrix:
-        for m, element in enumerate(row):
-            print("{:d}".format(element), end=" ")
+        for element in row:
+            print("{:d}".format(element), end=' ')
         print()
