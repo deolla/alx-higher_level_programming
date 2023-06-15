@@ -1,5 +1,9 @@
 #include <Python.h>
 
+/**
+ * print_python_bytes - Prints information about Python bytes objects
+ * @p: A pointer to a PyObject that represents a bytes object
+ */
 void print_python_bytes(PyObject *p)
 {
 	PyBytesObject *bytes = (PyBytesObject *)p;
@@ -26,6 +30,10 @@ void print_python_bytes(PyObject *p)
 	printf("\n");
 }
 
+/**
+ * print_python_list - Prints information about Python lists
+ * @p: A pointer to a PyObject that represents a list object
+ */
 void print_python_list(PyObject *p)
 {
 	PyListObject *list = (PyListObject *)p;
@@ -55,13 +63,9 @@ void print_python_list(PyObject *p)
 			printf("tuple\n");
 		}
 		else if (PyFloat_Check(item))
-		{
 			printf("float\n");
-		}
 		else if (PyLong_Check(item))
-		{
 			printf("int\n");
-		}
 		else if (PyUnicode_Check(item))
 			printf("str\n");
 		else
