@@ -1,4 +1,4 @@
-#!/usr/bin/pythoon3
+#!/usr/bin/python3
 
 """
 Define a MagicClass that represents a circle.
