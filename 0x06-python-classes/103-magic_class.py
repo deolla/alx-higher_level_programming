@@ -6,6 +6,7 @@ import math
 Define a MagicClass that represents a circle.
 """
 
+
 class MagicClass:
     """
     Define a MagicClass that represents a circle.
