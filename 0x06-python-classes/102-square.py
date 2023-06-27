@@ -76,7 +76,6 @@ class Square:
         """
         if isinstance(other, Square):
             return self.area() == other.area()
-        return False
 
     def __ne__(self, other):
         """
@@ -102,7 +101,6 @@ class Square:
         """
         if isinstance(other, Square):
             return self.area() > other.area()
-        return False
 
     def __ge__(self, other):
         """
@@ -116,7 +114,6 @@ class Square:
         """
         if isinstance(other, Square):
             return self.area() >= other.area()
-        return False
 
     def __lt__(self, other):
         """
@@ -130,7 +127,6 @@ class Square:
         """
         if isinstance(other, Square):
             return self.area() < other.area()
-        return False
 
     def __le__(self, other):
         """
@@ -145,4 +141,3 @@ class Square:
         """
         if isinstance(other, Square):
             return self.area() < other.area()
-        return False
