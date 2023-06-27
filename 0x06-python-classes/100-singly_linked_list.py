@@ -20,10 +20,10 @@ class Node:
 
         Args:
             data (int): The data to be stored in the node.
-            next_node (Node):  The reference to the next node. Defaults to None.
+            next_node (Node):  The reference to the next node.
 
         Raises:
-            TypeError: If data is not an integer or next_node is not None or a None Object.
+            TypeError: If data is not an integer or next_node is not None.
         """
         self.data = data
         self.next_node = next_node
@@ -80,7 +80,6 @@ class Node:
         self.__next_node = value
 
 
-
 class SinglyLinkedList:
     """
     This class defines a singly linked list.
@@ -115,7 +114,8 @@ class SinglyLinkedList:
             self.__head = new_node
         else:
             current = self.__head
-            while (current.next_node is not None and current.next_node.data < value):
+            while current.next_node is not None and \
+                    current.next_node.data < value:
                 current = current.next_node
             new_node.next_node = current.next_node
             current.next_node = new_node
