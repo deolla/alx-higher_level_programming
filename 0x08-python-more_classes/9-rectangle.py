@@ -26,7 +26,7 @@ class Rectangle:
         """
         self.height = height
         self.width = width
-        Rectangle.number_of_instances += 1
+        type(self).number_of_instances += 1
 
     @property
     def width(self):
@@ -88,6 +88,12 @@ class Rectangle:
 
     @classmethod
     def square(cls, size=0):
+        """
+        Args:
+            size (int): The width and height of the new Rectangle.
+        Returns:
+            A new Rectangle with width and height equal to size.
+        """
         return cls(size, size)
 
     def area(self):
@@ -134,7 +140,7 @@ class Rectangle:
         Print the message when an instance of Rectangle is deleted.
         """
         print("Bye rectangle...")
-        Rectangle.number_of_instances -= 1
+        type(self).number_of_instances -= 1
 
     @staticmethod
     def bigger_or_equal(rect_1, rect_2):
