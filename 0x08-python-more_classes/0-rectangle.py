@@ -9,3 +9,4 @@ class Rectangle:
     """
     This class represents an empty square.
     """
+    pass
