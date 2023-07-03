@@ -156,4 +156,4 @@ class Rectangle:
         Returns:
             A new Rectangle instance.
         """
-        return cls(size, size)
+        return Rectangle(size, size)
