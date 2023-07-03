@@ -86,6 +86,10 @@ class Rectangle:
         else:
             self.__height = value
 
+    @classmethod
+    def square(cls, size=0):
+        return cls(size, size)
+
     def area(self):
         """
         Calculate the return of the area of rectangle.
@@ -149,7 +153,3 @@ class Rectangle:
             return rect_1
         else:
             return rect_2
-
-    @classmethod
-    def square(cls, size=0):
-        return cls(size, size)
