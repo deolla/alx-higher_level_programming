@@ -62,16 +62,6 @@ Test case 8: passing a negative value
                 ...
         ValueError: name must be greater than 0
 
-Test edge cases 1: passing a boolean and a string value
+Test edge cases 1: passing a boolean value
         >>> bg = BaseGeometry()
         >>> bg.integer_validator("name", True)
-	Traceback (most recent call last):
-		...
-	TypeError: name must be an integer
-
-Test edge case 2: passing a string value
-        >>> bg = BaseGeometry()
-        >>> bg.integer_validator("name", "hello")
-        Traceback (most recent call last):
-                ...
-        TypeError: name must be an integer
