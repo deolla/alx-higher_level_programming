@@ -65,3 +65,4 @@ Test case 8: passing a negative value
 Test edge cases 1: passing a boolean value
         >>> bg = BaseGeometry()
         >>> bg.integer_validator("name", True)
+
