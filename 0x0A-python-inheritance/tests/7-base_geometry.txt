@@ -9,6 +9,23 @@ Usage:
 Importing class from module
         >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
 
+checking module docstring:
+	>>> n = __import__('7-base_geometry').__doc__
+	>>> len(n) > 1
+	True
+
+checking for class docstring:
+	>> c = __import__('7-base_geometry').__doc__
+	>> lec(c) > 1
+	True
+checking for method docstring:
+	>>> mod1 = __import__('7-base_geometry').BaseGeometry.integer_validator.__doc__
+	>>> len(mod1) > 1
+	True
+	>>> mod2 = __import__('7-base_geometry').BaseGeometry.integer_validator.__doc__
+	>>> len(mod2) > 1
+	True
+
 Test case 1: Passing a value greater than 0
         >>> bg = BaseGeometry()
         >>> bg.integer_validator("name", 9)

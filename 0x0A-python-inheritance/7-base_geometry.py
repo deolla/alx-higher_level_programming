@@ -12,6 +12,8 @@ class BaseGeometry:
 
     def area(self):
         """
+        Method not implemented.
+
         Raises:
             Exception: with the message area() is not implemented.
         """
@@ -19,7 +21,7 @@ class BaseGeometry:
 
     def integer_validator(self, name, value):
         """
-        Validates values.
+        Validates  a values as an integer
 
         Raises:
             TypeError: if not integer.
