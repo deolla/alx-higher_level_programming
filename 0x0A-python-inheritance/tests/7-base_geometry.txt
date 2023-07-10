@@ -66,3 +66,16 @@ Test edge cases 1: passing a boolean value
         >>> bg = BaseGeometry()
         >>> bg.integer_validator("name", True)
 
+Test case 9: passing None to method
+	>>> bg = BaseGeometry()
+	>>> bg.integer_validator("age", None)
+	Traceback (most recent call last):
+		...
+	TypeError: age must be an integer
+
+Test case 10: passing three argument to interger_validator
+	>>> bg = BaseGeometry()
+	>>> bg.integer_validator("name", 1, 2)
+	Traceback (most recent call last):
+		...
+	TypeError: integer_validator() takes 3 positional arguments but 4 were given
