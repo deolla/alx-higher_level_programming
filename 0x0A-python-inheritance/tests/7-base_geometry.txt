@@ -62,6 +62,13 @@ Test case 8: passing a negative value
 		...
 	ValueError: name must be greater than 0
 
+Test case 9: Passing None to method
+    >>> bg = BaseGeometry()
+    >>> bg.integer_validator("age", None)
+    Traceback (most recent call last):
+              ...
+    TypeError: age must be an integer
+
 Test edge case 10: passing a string value.
         >>> bg = BaseGeometry()
         >>> bg.integer_validator("name", "hello")
