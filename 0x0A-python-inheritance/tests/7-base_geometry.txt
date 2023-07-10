@@ -1,0 +1,74 @@
+================================
+Test cases: 7-base_geometry
+A class BaseGeometry
+================================
+
+Usage:
+*****
+
+Importing class from module:
+        >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+
+Test case 1: Passing a value greater than 0
+        >>> bg = BaseGeometry()
+        >>> bg.integer_validator("name", 9)
+
+Test case 2: Passing one argument to integer_validator function.
+        >>> Bg = BaseGeometry()
+        >>> Bg.integer_validator("name")
+        Traceback (most recent call last):
+                ...
+        TypeError: integer_validator() missing 1 required positional argument: 'value'
+
+Test case 3: Passing no arguments.
+        >>> bg = BaseGeometry()
+        >>> bg.integer_validator()
+        Traceback (most recent call last):
+                ...
+	TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
+
+Test case 4: passing tuple as argument method.
+        >>> bg = BaseGeometry()
+        >>> bg.integer_validator("age", (6, 9))
+        Traceback (most recent call last):
+                ...
+        TypeError: age must be an integer
+
+Test case 5: passing dict as argument method.
+	>>> bg = BaseGeometry()
+	>>> bg.integer_validator("age", {3, 5})
+	Traceback (most recent call last):
+		...
+	TypeError: age must be an integer
+
+Test case 6: printing area:
+	>>> bg = BaseGeometry()
+	>>> bg.area()
+	Traceback (most recent call last):
+		...
+	Exception: area() is not implemented
+
+Test case 7: pass a zero value
+	>>> bg = BaseGeometry()
+	>>> bg.integer_validator("name", 0)
+	Traceback (most recent call last):
+		...
+	ValueError: name must be greater than 0
+
+Test case 8: passing a negative value
+	>>> bg = BaseGeometry()
+	>>> bg.integer_validator("name", -8)
+	Traceback (most recent call last):
+		...
+	ValueError: name must be greater than 0
+
+Test edge cases 6: passing a boolean and a string value.
+	>>> bg = BaseGeometry()
+	>>> bg.integer_validator("name", True)
+
+Test edge case 10: passing a string value.
+        >>> bg = BaseGeometry()
+        >>> bg.integer_validator("name", "hello")
+        Traceback (most recent call last):
+                ...
+        TypeError: name must be an integer
