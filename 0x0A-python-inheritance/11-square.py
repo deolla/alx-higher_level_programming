@@ -37,4 +37,4 @@ class Square(Rectangle):
         Returns:
             return the square description: [Square] <width>/<height>
         """
-        return f"[square] {self.__size}/{self.__size}"
+        return '[square]' + str(self.__size) + '/' + str(self.__size)
