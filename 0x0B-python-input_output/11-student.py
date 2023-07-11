@@ -6,19 +6,21 @@ Defines the class Student
 
 class Student:
     """
-    Class student
+    Class: create student.
     """
 
     def __init__(self, first_name, last_name, age):
         """
-        Method to initialize
+        Initialize method
         """
         self.first_name = first_name
         self.last_name = last_name
         self.age = age
 
     def to_json(self, attrs=None):
-        """ Method that returns directory description """
+        """
+        Returns directory description
+        """
         obj = self.__dict__.copy()
         if type(attrs) is list:
 
@@ -35,3 +37,10 @@ class Student:
             return lists
 
         return obj
+
+    def reload_from_json(self, json):
+        """
+        Replaces attributes of the Student instance
+        """
+        for a in json:
+            self.__dict__[a] = json[a]
