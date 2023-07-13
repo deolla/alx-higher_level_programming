@@ -11,27 +11,26 @@ class Rectangle(Base):
     A class Rectangle that inherits from Base.
 
     Attributes:
-        __width: width of the retangle.
-        __height: height of the rectangle.
-        __x: private attributes.
-        __y: private attributes.
-
+        __width (int): width of the retangle.
+        __height (int): height of the rectangle.
+        __x (int): private attributes.
+        __y (int): private attributes.
     """
     def __init__(self, width, height, x=0, y=0, id=None):
         """
         Initialises a rectangle instance.
 
         Args:
-            width: width.
-            height: height.
-            x: x
-            y: y
+            width (int): width.
+            height (int): height.
+            x (int): x
+            y (int): y
         """
         super().__init__(id)
-        self.__width = width
-        self.__height = height
-        self.__x = x
-        self.__y = y
+        self.width = width
+        self.height = height
+        self.x = x
+        self.y = y
 
     @property
     def width(self):
@@ -49,8 +48,16 @@ class Rectangle(Base):
         Set the width of the retangle.
 
         Args:
-            value: The size of value to set.
+            value: The width of value to set.
+
+        Raises:
+            TypeError: width not integer.
+            ValueError: value < 0
         """
+        if not isinstance(value, int):
+            raise TypeError("width must be an integer")
+        if value <= 0:
+            raise ValueError("width must be > 0")
         self.__width = value
 
     @property
@@ -69,8 +76,16 @@ class Rectangle(Base):
         Set height of the retangle.
 
         Args:
-            value: The size of value to set.
+            value: The height of value to set.
+
+        Raises:
+            TypeError: height not int.
+            ValueError: value < 0
         """
+        if not isinstance(value, int):
+            raise TypeError("height must be an integer")
+        if value <= 0:
+            raise ValueError("height must be > 0")
         self.__height = value
 
     @property
@@ -90,7 +105,15 @@ class Rectangle(Base):
 
         Args:
             value: The x value to set.
+
+        Raises:
+            TypeError: x not an integer.
+            ValueError: value < 0.
         """
+        if not isinstance(value, int):
+            raise TypeError("x must be an integer")
+        if value < 0:
+            raise ValueError("x must be >= 0")
         self.__x = value
 
     @property
@@ -110,5 +133,29 @@ class Rectangle(Base):
 
         Args:
             value: The y value to set.
+
+        Raises:
+            TypeError: y not an integer.
+            ValueError: value < 0.
         """
+        if not isinstance(value, int):
+            raise TypeError("y must be an integer")
+        if value < 0:
+            raise ValueError("y must be >= 0")
         self.__y = value
+
+    def area(self):
+        """
+        Calculate the return of the area of the rectangle.
+
+        Returns:
+            int: The area of rectangle.
+        """
+        return self.height * self.width
+
+    def display(self):
+        """
+        Prints in stdout the Rectangle instance with the character #.
+        """
+        for _ in range(self.height):
+            print("#" * self.width)
