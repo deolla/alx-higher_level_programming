@@ -21,9 +21,6 @@ class Base:
 
         Args:
             id (int): This is a unique identifier of the base.
-
-        Raises:
-            Exceptions: 
         """
         if id is not None:
             self.id = id
