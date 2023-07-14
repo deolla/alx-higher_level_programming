@@ -68,6 +68,43 @@ class Base:
             json_string: a string representing a list of dictionaries.
         """
         if json_string is None or json_string == "":
-            return "[]"
+            return []
         return json.loads(json_string)
+    
+    @classmethod
+    def create(cls, **dictionary):
+        """
+        Returns:
+            returns an instance with all attributes already set.
 
+        Args:
+            dictionary: a dictionary that contains a key/value.
+        """
+        if cls.__name__ == "Rectangle":
+            new_instance = cls(1, 1)
+        elif cls.__name__ == "Square":
+            new_instance = cls(1)
+        else:
+            new_instance = None
+
+        if new_instance is not None:
+            new_instance.update(**dictionary)
+
+        return new_instance
+
+    @classmethod
+    def load_from_file(cls):
+        """
+        Returns:
+            returns a list of instances.
+            If the file doesn’t exist, return an empty list.
+        """
+        filename = cls.__name__ + ".json"
+        try:
+            with open(filename, 'r') as f:
+                json_string = f.read()
+                dictionaries = cls.from_json_string(json_string)
+                instances = [cls.create(**d) for d in dictionaries]
+                return instances
+        except FileNotFoundError:
+            return []
