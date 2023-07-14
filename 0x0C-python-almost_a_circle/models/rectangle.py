@@ -164,15 +164,6 @@ class Rectangle(Base):
             output += " " * self.x + "#" * self.width + "\n"
         print(output, end="")
 
-    def __str__(self):
-        """
-        Overriding the __str__ method.
-
-        Returns:
-            return [Rectangle] (<id>) <x>/<y> - <width>/<height>.
-        """
-        return f"[Rectangle] ({self.id}) {self.x}/{self.y} - {self.width}/{self.height}"
-
     def update(self, *args, **kwargs):
         """
         Assigns an argument to each attribute.
@@ -196,3 +187,25 @@ class Rectangle(Base):
                 self.x = args[3]
             if arg_cunt > 4:
                 self.y = args[4]
+
+    def to_dictionary(self):
+        """
+        Returns:
+            returns the dictionary representation of a Rectangle.
+        """
+        return {
+                'id': self.id,
+                'width': self.width,
+                'height': self.height,
+                'x': self.x,
+                'y': self.y,
+        }
+
+    def __str__(self):
+        """
+        Overriding the __str__ method.
+
+        Returns:
+            return [Rectangle] (<id>) <x>/<y> - <width>/<height>.
+        """
+        return f"[Rectangle] ({self.id}) {self.x}/{self.y} - {self.width}/{self.height}"
