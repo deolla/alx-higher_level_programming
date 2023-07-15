@@ -4,6 +4,8 @@
 This class will be the “base” of all other classes in this project.
 """
 import json
+import csv
+import turtle
 
 
 class Base:
@@ -98,6 +100,9 @@ class Base:
         Returns:
             returns a list of instances.
             If the file doesn’t exist, return an empty list.
+
+        Raises:
+            Execeptions: file not found
         """
         filename = cls.__name__ + ".json"
         try:
@@ -108,3 +113,75 @@ class Base:
                 return instances
         except FileNotFoundError:
             return []
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """
+        Serializes in CVS.
+
+        Args:
+            list_objs: lists object.
+        """
+        filename = cls.__name__ + ".csv"
+        with open(filename, 'w', newline='') as f:
+            writer = csv.writer(f)
+            if list_objs is None or list_objs == []:
+                f.write("[]")
+            else:
+                for obj in list_objs:
+                    if cls.__name__ == "Rectangle":
+                        writer.writerow([obj.id, obj.width, obj.height, obj.x, obj.y])
+                    elif cls.__name__ == "Square":
+                        writer.writerow([obj.id, obj.size, obj.x, obj.y])
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """
+        Deserializes in CSV.
+
+        Raises:
+            Exceptions: file not found.
+        """
+        filename = cls.__name__ + ".csv"
+        try:
+            with open(filename, 'r', newline='') as f:
+                reader = csv.reader(f)
+                instances = []
+                for r in reader:
+                    if cls.__name__ == "Rectangle":
+                        i = cls(int(r[1]), int(r[2]), int(r[3]), int(r[4]), int(r[0]))
+                    elif cls.__name__ == "Square":
+                        i = cls(int(r[1]), int(r[2]), int(r[3]), int(r[0]))
+                    instances.append(i)
+                return instances
+        except FileNotFoundError:
+            return []
+
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        turtle.clearscreen()
+        screen = turtle.Screen()
+        turtle.speed(2)
+
+        for rectangle in list_rectangles:
+            turtle.penup()
+            turtle.goto(rectangle.x, rectangle.y)
+            turtle.pendown()
+            turtle.forward(rectangle.width)
+            turtle.right(90)
+            turtle.forward(rectangle.height)
+            turtle.right(90)
+            turtle.forward(rectangle.width)
+            turtle.right(90)
+            turtle.forward(rectangle.height)
+            turtle.right(90)
+
+        for square in list_squares:
+            turtle.penup()
+            turtle.goto(square.x, square.y)
+            turtle.pendown()
+            for _ in range(4):
+                turtle.forward(square.size)
+                turtle.right(90)
+
+        turtle.exitonclick()
