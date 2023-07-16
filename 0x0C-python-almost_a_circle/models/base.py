@@ -52,13 +52,13 @@ class Base:
         Args:
             list_objs: a list of instances who inherits of Base.
         """
-        if  list_objs is None:
-            list_objs = "[]"
+        if list_objs is None:
+            list_objs = []
 
         filename = cls.__name__ + ".json"
-        with open(filename, 'w') as f:
+        with open(filename, 'w') as file:
             json_string = cls.to_json_string([obj.to_dictionary() for obj in list_objs])
-            f.write(json_string)
+            file.write(json_string)
 
     @staticmethod
     def from_json_string(json_string):
@@ -72,7 +72,7 @@ class Base:
         if json_string is None or json_string == "":
             return []
         return json.loads(json_string)
-    
+
     @classmethod
     def create(cls, **dictionary):
         """
@@ -120,19 +120,20 @@ class Base:
         Serializes in CVS.
 
         Args:
-            list_objs: lists object.
+            list_objs[list]: lists object.
         """
         filename = cls.__name__ + ".csv"
-        with open(filename, 'w', newline='') as f:
-            writer = csv.writer(f)
+        with open(filename, 'w', newline="") as f:
             if list_objs is None or list_objs == []:
                 f.write("[]")
             else:
+                if cls.__name__ == "Rectangle":
+                    fieldnames = ["id", "width", "height", "x", "y"]
+                else:
+                    fieldnames = ["id", "size", "x", "y"]
+                writer = csv.DictWriter(f, fieldnames=fieldnames)
                 for obj in list_objs:
-                    if cls.__name__ == "Rectangle":
-                        writer.writerow([obj.id, obj.width, obj.height, obj.x, obj.y])
-                    elif cls.__name__ == "Square":
-                        writer.writerow([obj.id, obj.size, obj.x, obj.y])
+                    writer.writerow(obj.to_dictionary())
 
     @classmethod
     def load_from_file_csv(cls):
@@ -145,43 +146,55 @@ class Base:
         filename = cls.__name__ + ".csv"
         try:
             with open(filename, 'r', newline='') as f:
-                reader = csv.reader(f)
-                instances = []
-                for r in reader:
-                    if cls.__name__ == "Rectangle":
-                        i = cls(int(r[1]), int(r[2]), int(r[3]), int(r[4]), int(r[0]))
-                    elif cls.__name__ == "Square":
-                        i = cls(int(r[1]), int(r[2]), int(r[3]), int(r[0]))
-                    instances.append(i)
-                return instances
+                if cls.__name__ == "Rectangle":
+                    fieldnames = ["id", "width", "height", "x", "y"]
+                else:
+                    fieldnames = ["id", "size", "x", "y"]
+                instance = csv.DictReader(f, fieldnames=fieldnames)
+                instance = [
+                    dict([m, int(n)] for m, n in d.items())
+                    for d in instance
+                ]
+                return [cls.create(**d) for d in instance]
         except FileNotFoundError:
             return []
 
     @staticmethod
     def draw(list_rectangles, list_squares):
-        turtle.clearscreen()
-        screen = turtle.Screen()
-        turtle.speed(2)
+        """
+        Opens a window and draws all the Rectangles and Squares.
 
-        for rectangle in list_rectangles:
-            turtle.penup()
-            turtle.goto(rectangle.x, rectangle.y)
-            turtle.pendown()
-            turtle.forward(rectangle.width)
-            turtle.right(90)
-            turtle.forward(rectangle.height)
-            turtle.right(90)
-            turtle.forward(rectangle.width)
-            turtle.right(90)
-            turtle.forward(rectangle.height)
-            turtle.right(90)
+        Args:
+            list_rectangles(list): A list of Rectangle objects.
+            list_squares(list): A list of Square objects.
+        """
+        turt = turtle.Turtle()
+        turt.screen.bgcolor("#b7312c")
+        turt.pensize(3)
+        turt.shape("turtle")
 
-        for square in list_squares:
-            turtle.penup()
-            turtle.goto(square.x, square.y)
-            turtle.pendown()
-            for _ in range(4):
-                turtle.forward(square.size)
-                turtle.right(90)
+        turt.color("#ffffff")
+        for rect in list_rectangles:
+            turt.showturtle()
+            turt.up()
+            turt.goto(rect.x, rect.y)
+            turt.down()
+            for i in range(2):
+                turt.forward(rect.width)
+                turt.left(90)
+                turt.forward(rect.height)
+                turt.left(90)
+                turt.hideturtle()
+
+        turt.color("#b5e3d8")
+        for sq in list_squares:
+            turt.showturtle()
+            turt.up()
+            turt.goto(sq.x, sq.y)
+            turt.down()
+            for i in range(4):
+                turt.forward(sq.size)
+                turt.left(90)
+                turt.hideturtle()
 
         turtle.exitonclick()
