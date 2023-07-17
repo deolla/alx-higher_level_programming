@@ -1,15 +1,16 @@
 #!/usr/bin/python3
-"""Defines unittests for base.py.
+"""
+This is a unittests for base.py.
 
 Unittest classes:
-    TestBase_instantiation - line 21
-    TestBase_to_json_string - line 108
-    TestBase_save_to_file - line 154
-    TestBase_from_json_string - line 232
-    TestBase_create - line 286
-    TestBase_load_from_file - line 338
-    TestBase_save_to_file_csv - line 404
-    TestBase_load_from_file_csv - line 482
+    TestBase_instantiation
+    TestBase_to_json_string
+    TestBase_save_to_file
+    TestBase_from_json_string
+    TestBase_create
+    TestBase_load_from_file
+    TestBase_save_to_file_csv
+    TestBase_load_from_file_csv
 """
 import os
 import unittest
@@ -19,80 +20,82 @@ from models.square import Square
 
 
 class TestBase_instantiation(unittest.TestCase):
-    """Unittests for testing instantiation of the Base class."""
+    """
+    This is a Unittests for testing instantiation of Base class.
+    """
 
     def test_no_arg(self):
-        b1 = Base()
-        b2 = Base()
-        self.assertEqual(b1.id, b2.id - 1)
+        pop = Base()
+        lol = Base()
+        self.assertEqual(pop.id, lol.id - 1)
 
     def test_three_bases(self):
-        b1 = Base()
-        b2 = Base()
-        b3 = Base()
-        self.assertEqual(b1.id, b3.id - 2)
+        pop = Base()
+        lol = Base()
+        lop = Base()
+        self.assertEqual(pop.id, lop.id - 2)
 
     def test_None_id(self):
-        b1 = Base(None)
-        b2 = Base(None)
-        self.assertEqual(b1.id, b2.id - 1)
+        pop = Base(None)
+        lol = Base(None)
+        self.assertEqual(pop.id, lol.id - 1)
 
     def test_unique_id(self):
         self.assertEqual(12, Base(12).id)
 
     def test_nb_instances_after_unique_id(self):
-        b1 = Base()
-        b2 = Base(12)
-        b3 = Base()
-        self.assertEqual(b1.id, b3.id - 1)
+        pop = Base()
+        lol = Base(12)
+        lop = Base()
+        self.assertEqual(pop.id, lop.id - 1)
 
     def test_id_public(self):
-        b = Base(12)
-        b.id = 15
-        self.assertEqual(15, b.id)
+        pop = Base(12)
+        pop.id = 15
+        self.assertEqual(15, pop.id)
 
     def test_nb_instances_private(self):
         with self.assertRaises(AttributeError):
             print(Base(12).__nb_instances)
 
     def test_str_id(self):
-        self.assertEqual("hello", Base("hello").id)
+        self.assertEqual("Iloveeating", Base("Iloveeating").id)
 
     def test_float_id(self):
-        self.assertEqual(5.5, Base(5.5).id)
+        self.assertEqual(7.7, Base(7.7).id)
 
     def test_complex_id(self):
-        self.assertEqual(complex(5), Base(complex(5)).id)
+        self.assertEqual(complex(8), Base(complex(8)).id)
 
     def test_dict_id(self):
-        self.assertEqual({"a": 1, "b": 2}, Base({"a": 1, "b": 2}).id)
+        self.assertEqual({"u": 901, "m": 300}, Base({"u": 901, "m": 300}).id)
 
     def test_bool_id(self):
         self.assertEqual(True, Base(True).id)
 
     def test_list_id(self):
-        self.assertEqual([1, 2, 3], Base([1, 2, 3]).id)
+        self.assertEqual([4, 6, 8], Base([4, 6, 8]).id)
 
     def test_tuple_id(self):
-        self.assertEqual((1, 2), Base((1, 2)).id)
+        self.assertEqual((89, 99), Base((89, 99)).id)
 
     def test_set_id(self):
-        self.assertEqual({1, 2, 3}, Base({1, 2, 3}).id)
+        self.assertEqual({2, 4, 6}, Base({2, 4, 6}).id)
 
     def test_frozenset_id(self):
         self.assertEqual(frozenset({1, 2, 3}), Base(frozenset({1, 2, 3})).id)
 
     def test_range_id(self):
-        self.assertEqual(range(5), Base(range(5)).id)
+        self.assertEqual(range(11), Base(range(11)).id)
 
     def test_bytes_id(self):
         self.assertEqual(b'Python', Base(b'Python').id)
 
     def test_bytearray_id(self):
-        self.assertEqual(bytearray(b'abcefg'), Base(bytearray(b'abcefg')).id)
+        self.assertEqual(bytearray(b'abcdefg'), Base(bytearray(b'abcdefg')).id)
 
     def test_memoryview_id(self):
-        self.assertEqual(memoryview(b'abcefg'), Base(memoryview(b'abcefg')).id)
+        self.assertEqual(memoryview(b'abcdefg'), Base(memoryview(b'abcdefg')).id)
 
     def test_inf_id(self):
         self.assertEqual(float('inf'), Base(float('inf')).id)
@@ -152,7 +155,9 @@ class TestBase_to_json_string(unittest.TestCase):
 
 
 class TestBase_save_to_file(unittest.TestCase):
-    """Unittests for testing save_to_file method of Base class."""
+    """
+    This is a Unittests for testing save_to_file method of Base class.
+    """
 
     @classmethod
     def tearDown(self):
