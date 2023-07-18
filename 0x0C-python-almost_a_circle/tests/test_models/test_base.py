@@ -21,7 +21,7 @@ from models.square import Square
 
 class TestBase_instantiation(unittest.TestCase):
     """
-    This is a Unittests for testing instantiation of Base class.
+    This is a Unittests testing instantiation of Base class.
     """
 
     def test_no_arg(self):
@@ -109,7 +109,9 @@ class TestBase_instantiation(unittest.TestCase):
 
 
 class TestBase_to_json_string(unittest.TestCase):
-    """Unittests for testing to_json_string method of Base class."""
+    """
+    Unittests testing to_json_string method of Base class.
+    """
 
     def test_to_json_string_rectangle_type(self):
         r = Rectangle(10, 7, 2, 8, 6)
@@ -235,7 +237,9 @@ class TestBase_save_to_file(unittest.TestCase):
 
 
 class TestBase_from_json_string(unittest.TestCase):
-    """Unittests for testing from_json_string method of Base class."""
+    """
+    Unittests testing from_json_string method of Base class.
+    """
 
     def test_from_json_string_type(self):
         list_input = [{"id": 89, "width": 10, "height": 4}]
