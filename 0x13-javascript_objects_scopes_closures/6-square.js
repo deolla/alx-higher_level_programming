@@ -10,21 +10,14 @@ class Square extends SquareU {
   charPrint (c) {
     let str = '';
     if (c === undefined) {
-      for (let x = 0; x < this.width; x++) {
-        str = '';
-        for (let m = 0; m < this.height; m++) {
-          str += 'X';
-        }
-        console.log(str);
+      c = 'X'
+    }
+    for (let x = 0; x < this.width; x++) {
+      str = '';
+      for (let m = 0; m < this.height; m++) {
+        str += c;
       }
-    } else {
-      for (let i = 0; i < this.width; i++) {
-        str = '';
-        for (let j = 0; j < this.height; j++) {
-          str += 'c';
-        }
-        console.log(str);
-      }
+      console.log(str);
     }
   }
 }
