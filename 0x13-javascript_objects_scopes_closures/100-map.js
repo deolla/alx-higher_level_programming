@@ -5,9 +5,6 @@
 // A new list must be created with each value equal to the value of the initial list, multipled by the index in the list
 // Print both the initial list and the new list
 
-const arr = require('./100-data.js');
-
-const newData = arr.map((value, index) => value * index);
-
-console.log('Initial Array:', arr);
-console.log('New Array:', newData);
+const arr = require('./100-data.js').arr;
+console.log(arr);
+console.log(arr.map((item, index) => value * index));
