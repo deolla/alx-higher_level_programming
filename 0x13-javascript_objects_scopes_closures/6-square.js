@@ -4,13 +4,9 @@
 // reate an instance method called charPrint(c) that prints the rectangle using the character c
 // If c is undefined, use the character X.
 
-const Rectangle = require('./4-Rectangle');
+const SquareU = require('./5-square');
 
-class Square extends Rectangle {
-  constructor (size) {
-    super(size, size);
-  }
-
+class Square extends SquareU {
   charPrint (c) {
     let str = '';
     if (c === undefined) {
