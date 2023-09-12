@@ -21,7 +21,7 @@ class Square extends SquareU {
       for (let i = 0; i < this.width; i++) {
         str = '';
         for (let j = 0; j < this.height; j++) {
-          str += 'C';
+          str += 'c';
         }
         console.log(str);
       }
