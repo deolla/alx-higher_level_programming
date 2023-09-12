@@ -5,4 +5,4 @@ let m = 0;
 exports.logMe = function (item) {
   m++;
   console.log(`${m}: ${item}`);
-}
+};
