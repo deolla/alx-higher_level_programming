@@ -30,6 +30,10 @@ repo - alx-higher_level_programming
 
 0x0D-SQL_introduction.
 
-0x0E-SQL_more_queries.
+0x0E-SQL_more_queries. 
+
+0x12-javascript-warm_up.
+
+0x13-javascript_objects_scopes_closures.
 
 0x0F-python-object_relational_mapping.
