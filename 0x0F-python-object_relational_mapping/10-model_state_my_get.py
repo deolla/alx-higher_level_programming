@@ -20,4 +20,3 @@ if __name__ == "__main__":
         print(state[0].id)
     except IndexError:
         print("Not found")
-    
