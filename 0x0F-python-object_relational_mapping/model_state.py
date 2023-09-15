@@ -7,7 +7,7 @@ from sqlalchemy import Column, String, Integer, Sequence
 from sqlalchemy.ext.declarative import declarative_base
 
 metdata = MetaData()
-Base = declarative_base(metadate=metdata)
+Base = declarative_base(metadata=metdata)
 
 
 class State(Base):
