@@ -17,9 +17,8 @@ if __name__ == "__main__":
     )
     state_name = sys.argv[4]
     cur = db.cursor()
-    cur.execute(
-        "SELECT * FROM states WHERE name LIKE BINARY '{}'".format(state_name)
-    )
+    m = "SELECT * FROM states WHERE name LIKE BINARY %s"
+    cur.execute(m, (state_name,))
     states = cur.fetchall()
     for i in states:
         print(i)
