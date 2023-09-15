@@ -13,13 +13,13 @@ if __name__ == " __main__":
      user=sys.argv[1],
      passwd=sys.argv[2],
      db=sys.argv[3],
+     state_name=sys.argv[4],
      port=3306
     )
-    state_name = sys.argv[4]
     cur = db.cursor()
     cur.execute(
         "SELECT * FROM states WHERE name LIKE BINARY '{}'".format(state_name))
-    states.cur.fetch.all()
+    states = cur.fetchall()
     for i in states:
         print(i)
     cur.close()
