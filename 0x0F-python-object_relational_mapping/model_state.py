@@ -6,7 +6,8 @@ and an instance Base = declarative_base()
 from sqlalchemy import Column, String, Integer, Sequence
 from sqlalchemy.ext.declarative import declarative_base
 
-Base = declarative_base()
+metdata = MetaData()
+Base = declarative_base(metadate=metdata)
 
 
 class State(Base):
