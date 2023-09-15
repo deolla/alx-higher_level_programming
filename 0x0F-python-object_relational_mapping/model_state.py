@@ -27,17 +27,3 @@ class State(Base):
         String(128),
         nullable=False
     )
-
-    def __init__(self, id, name):
-        """
-        Inherit from class
-
-        Args:
-            id - represents a column of an auto-generated, unique integer,
-                 can’t be null and is a primary key.
-            name - represents a column of a string with maximum 128 characters
-                   and can’t be null.
-        """
-        if id is not None:
-            self.id = id
-        self.name = name
