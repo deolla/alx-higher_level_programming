@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""akes in a URL, sends a request to the URL and displays the value of the variable X-Request-Id"""
+"""Makes in a URL, sends a request to the URL."""
 import requests
 import sys
 
