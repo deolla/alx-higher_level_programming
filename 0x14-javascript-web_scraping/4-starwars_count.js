@@ -1,9 +1,7 @@
 #!/usr/bin/node
 
 const request = require('request');
-
 const apiUrl = process.argv[2];
-const characterId = 18;
 
 request.get(apiUrl, (error, response, body) => {
   if (error) {
@@ -11,14 +9,11 @@ request.get(apiUrl, (error, response, body) => {
   } else if (response.statusCode !== 200) {
     console.log(response.statusCode);
   } else {
-    try {
-      const films = JSON.parse(body).results;
-      const moviesWithWedgeAntilles = films.filter((film) =>
-        film.characters.includes(`https://swapi-api.alx-tools.com/api/people/${characterId}/`)
-      );
-      console.log(moviesWithWedgeAntilles.length);
-    } catch (error) {
-      console.log(error);
-    }
+    const results = JSON.parse(body).results;
+    console.log(results.reduce((count, movie) => {
+      return movie.characters.find((character) => character.endsWith('/18/'))
+        ? count + 1
+        : count;
+    }, 0));
   }
 });
