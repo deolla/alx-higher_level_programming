@@ -7,15 +7,13 @@ const filePath = process.argv[3];
 
 request.get(url, (error, response, body) => {
   if (error) {
-    console.errror(error);
+    console.log(error);
   } else if (response.statusCode !== 200) {
-    console.error(response.statusCode);
+    console.log(response.statusCode);
   } else {
     fs.writeFile(filePath, body, { encoding: 'utf-8' }, (error) => {
       if (error) {
-        console.error(error);
-      } else {
-        console.log('Successfully saved the webpage content to the file.');
+        console.log(error);
       }
     });
   }

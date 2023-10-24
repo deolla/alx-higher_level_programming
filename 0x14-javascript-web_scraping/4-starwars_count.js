@@ -18,7 +18,7 @@ request.get(apiUrl, (error, response, body) => {
       );
       console.log(moviesWithWedgeAntilles.length);
     } catch (error) {
-      console.error(error);
+      console.log(error);
     }
   }
 });
