@@ -7,5 +7,4 @@ request.get(url, function (error, response) {
     console.error('Error:', error);
   } else {
     console.log('code:', response.statusCode);
-  }
 });
